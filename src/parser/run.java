@@ -11,7 +11,7 @@ public class run
 {
 	public static void main(String[] args) throws Exception
 	{
-		File file = new File("input.txt");
+		File file = new File("test3.txt");
 		InputStream is = new FileInputStream(file);
 
 		ANTLRInputStream input = new ANTLRInputStream(is);

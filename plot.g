@@ -4,8 +4,8 @@ options{ output=AST;}
 program : statement;
 statement 
 	:expression;
-
-expression : ('GRAPHICS2D'|'GRAPHICS3D')'[''SHAPE''{'shape(','shape)*'}'',''OPTIONS''{'option*'}'']';
+	
+expression : ('GRAPHICS2D'|'GRAPHICS3D')'[SHAPE{'(shape(','shape)*)'},OPTIONS{'(option(','option)*)?'}]';
 
 SHAPE_IDT: 'POINT2D'|'POINT3D'|'LINE2D'|'LINE3D'|'POLYGON2D'|'POLYGON3D'|'ARC'|'BEZIERCURVE2D'|'BEZIERCURVE3D'|'BSPLINECURVE2D'
            |'BSPLINECURVE3D'|'BEZIERSURFACE'|'BSPLINESURFACE'|'DISH'|'CIRCLE2D'|'CIRCLE3D'|'ELLIPSE2D'|'ELLIPSE3D'|'RECTANGL'|'SPHERE'
@@ -24,10 +24,10 @@ JOINFORM:'BEVEL'|'ROUND'|'MITER'
         ;        	
 VERTEXCOLORS:'{'COLOR(','COLOR)*'}'	
 	;
-shapeoptions: VAR'='INT|COLOR|JOINFORM|SIZE|VERTEXCOLORS
+shapeoptions: VAR'='(INT|FLOAT|COLOR|JOINFORM|SIZE|VERTEXCOLORS)
 	;	
 
-shape	:SHAPE_IDT '[''{' POINTS(','POINTS)*'},OPTIONS{'shapeoptions(','shapeoptions)*'}'']'
+shape	:SHAPE_IDT '[''{' POINTS(','POINTS)*'},OPTIONS{'(shapeoptions(','shapeoptions)*)?'}]'
 	;
 
 
@@ -48,7 +48,7 @@ FLOAT
     ;
 
 STRING
-    :  '\'' ( ESC_SEQ | ~('\\'|'\'') )* '\''
+    :   ('A'..'Z' | 'a'..'z' | ' ') +
     ;
 
 fragment

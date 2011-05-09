@@ -19,7 +19,10 @@ public class run
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		plotParser parser = new plotParser(tokens);
 		plotParser.program_return r = parser.program();
-		System.out.println(((BaseTree)r.getTree()).toStringTree());
+		CommonTree result = (CommonTree)r.getTree();
+		int n = result.getChildCount();
+		System.out.println(result.toStringTree());
+		
 	}
 }
 

@@ -9,11 +9,22 @@ import java.util.ArrayList;
 
 import org.antlr.runtime.tree.*;
 
+//$ANTLR 3.3 Nov 30, 2010 12:45:30 E:\\work\\srt\\antlr\\test\\plot.g 2011-05-07 22:52:01
+
+import org.antlr.runtime.*;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
+
+
+import org.antlr.runtime.tree.*;
+
 public class plotParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "SHAPE_IDT", "FLOAT", "POINTS", "VAR", "SIZE", "COLOR", "JOINFORM", "VERTEXCOLORS", "INT", "STRING", "ID", "EXPONENT", "HEX_DIGIT", "UNICODE_ESC", "OCTAL_ESC", "ESC_SEQ", "'GRAPHICS2D'", "'GRAPHICS3D'", "'[SHAPE{'", "','", "'},OPTIONS{'", "'}]'", "'='", "'['", "'{'", "'ImageSize'", "'ImageMargins'", "'XRatio'", "'YRatio'", "'Axes'", "'AxesOriginX'", "'AxesOriginY'", "'PlotRange'", "'FillType'", "'FrameType'", "'BackColor'", "'}'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "SHAPE_IDT", "FLOAT", "VAR", "INT", "COLOR", "JOINFORM", "SIZE", "VERTEXCOLORS", "STRING", "ID", "EXPONENT", "HEX_DIGIT", "UNICODE_ESC", "OCTAL_ESC", "ESC_SEQ", "'GRAPHICS2D'", "'GRAPHICS3D'", "'}]'", "'[SHAPE{'", "','", "'['", "'{'", "'('", "')'", "'},OPTIONS{'", "'='", "'ImageSize'", "'ImageMargins'", "'XRatio'", "'YRatio'", "'Axes'", "'AxesOriginX'", "'AxesOriginY'", "'PlotRangeX'", "'PlotRangeY'", "'FillType'", "'FrameType'", "'BackColor'", "'}'"
     };
     public static final int EOF=-1;
+    public static final int T__19=19;
     public static final int T__20=20;
     public static final int T__21=21;
     public static final int T__22=22;
@@ -35,22 +46,23 @@ public class plotParser extends Parser {
     public static final int T__38=38;
     public static final int T__39=39;
     public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
     public static final int SHAPE_IDT=4;
     public static final int FLOAT=5;
-    public static final int POINTS=6;
-    public static final int VAR=7;
-    public static final int SIZE=8;
-    public static final int COLOR=9;
-    public static final int JOINFORM=10;
+    public static final int VAR=6;
+    public static final int INT=7;
+    public static final int COLOR=8;
+    public static final int JOINFORM=9;
+    public static final int SIZE=10;
     public static final int VERTEXCOLORS=11;
-    public static final int INT=12;
-    public static final int STRING=13;
-    public static final int ID=14;
-    public static final int EXPONENT=15;
-    public static final int HEX_DIGIT=16;
-    public static final int UNICODE_ESC=17;
-    public static final int OCTAL_ESC=18;
-    public static final int ESC_SEQ=19;
+    public static final int STRING=12;
+    public static final int ID=13;
+    public static final int EXPONENT=14;
+    public static final int HEX_DIGIT=15;
+    public static final int UNICODE_ESC=16;
+    public static final int OCTAL_ESC=17;
+    public static final int ESC_SEQ=18;
 
     // delegates
     // delegators
@@ -78,29 +90,29 @@ public class plotParser extends Parser {
 
 
     public static class program_return extends ParserRuleReturnScope {
-        Object tree;
+        CommonTree tree;
         public Object getTree() { return tree; }
     };
 
     // $ANTLR start "program"
-    // E:\\work\\srt\\antlr\\test\\plot.g:4:1: program : statement ;
+    // E:\\work\\srt\\antlr\\test\\plot.g:7:1: program : statement ;
     public final plotParser.program_return program() throws RecognitionException {
         plotParser.program_return retval = new plotParser.program_return();
         retval.start = input.LT(1);
 
-        Object root_0 = null;
+        CommonTree root_0 = null;
 
         plotParser.statement_return statement1 = null;
 
 
 
         try {
-            // E:\\work\\srt\\antlr\\test\\plot.g:4:9: ( statement )
-            // E:\\work\\srt\\antlr\\test\\plot.g:4:11: statement
+            // E:\\work\\srt\\antlr\\test\\plot.g:7:9: ( statement )
+            // E:\\work\\srt\\antlr\\test\\plot.g:7:11: statement
             {
-            root_0 = (Object)adaptor.nil();
+            root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_statement_in_program18);
+            pushFollow(FOLLOW_statement_in_program33);
             statement1=statement();
 
             state._fsp--;
@@ -111,14 +123,14 @@ public class plotParser extends Parser {
 
             retval.stop = input.LT(-1);
 
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
             adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
 
         }
         catch (RecognitionException re) {
             reportError(re);
             recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
 
         }
         finally {
@@ -128,29 +140,29 @@ public class plotParser extends Parser {
     // $ANTLR end "program"
 
     public static class statement_return extends ParserRuleReturnScope {
-        Object tree;
+        CommonTree tree;
         public Object getTree() { return tree; }
     };
 
     // $ANTLR start "statement"
-    // E:\\work\\srt\\antlr\\test\\plot.g:5:1: statement : expression ;
+    // E:\\work\\srt\\antlr\\test\\plot.g:8:1: statement : expression ;
     public final plotParser.statement_return statement() throws RecognitionException {
         plotParser.statement_return retval = new plotParser.statement_return();
         retval.start = input.LT(1);
 
-        Object root_0 = null;
+        CommonTree root_0 = null;
 
         plotParser.expression_return expression2 = null;
 
 
 
         try {
-            // E:\\work\\srt\\antlr\\test\\plot.g:6:2: ( expression )
-            // E:\\work\\srt\\antlr\\test\\plot.g:6:3: expression
+            // E:\\work\\srt\\antlr\\test\\plot.g:9:2: ( expression )
+            // E:\\work\\srt\\antlr\\test\\plot.g:9:3: expression
             {
-            root_0 = (Object)adaptor.nil();
+            root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_expression_in_statement26);
+            pushFollow(FOLLOW_expression_in_statement41);
             expression2=expression();
 
             state._fsp--;
@@ -161,14 +173,14 @@ public class plotParser extends Parser {
 
             retval.stop = input.LT(-1);
 
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
             adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
 
         }
         catch (RecognitionException re) {
             reportError(re);
             recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
 
         }
         finally {
@@ -178,50 +190,38 @@ public class plotParser extends Parser {
     // $ANTLR end "statement"
 
     public static class expression_return extends ParserRuleReturnScope {
-        Object tree;
+        CommonTree tree;
         public Object getTree() { return tree; }
     };
 
     // $ANTLR start "expression"
-    // E:\\work\\srt\\antlr\\test\\plot.g:8:1: expression : ( 'GRAPHICS2D' | 'GRAPHICS3D' ) '[SHAPE{' ( shape ( ',' shape )* ) '},OPTIONS{' ( option ( ',' option )* )? '}]' ;
+    // E:\\work\\srt\\antlr\\test\\plot.g:11:1: expression : ( 'GRAPHICS2D' | 'GRAPHICS3D' ) shapes opts '}]' ;
     public final plotParser.expression_return expression() throws RecognitionException {
         plotParser.expression_return retval = new plotParser.expression_return();
         retval.start = input.LT(1);
 
-        Object root_0 = null;
+        CommonTree root_0 = null;
 
         Token set3=null;
-        Token string_literal4=null;
-        Token char_literal6=null;
-        Token string_literal8=null;
-        Token char_literal10=null;
-        Token string_literal12=null;
-        plotParser.shape_return shape5 = null;
+        Token string_literal6=null;
+        plotParser.shapes_return shapes4 = null;
 
-        plotParser.shape_return shape7 = null;
-
-        plotParser.option_return option9 = null;
-
-        plotParser.option_return option11 = null;
+        plotParser.opts_return opts5 = null;
 
 
-        Object set3_tree=null;
-        Object string_literal4_tree=null;
-        Object char_literal6_tree=null;
-        Object string_literal8_tree=null;
-        Object char_literal10_tree=null;
-        Object string_literal12_tree=null;
+        CommonTree set3_tree=null;
+        CommonTree string_literal6_tree=null;
 
         try {
-            // E:\\work\\srt\\antlr\\test\\plot.g:8:12: ( ( 'GRAPHICS2D' | 'GRAPHICS3D' ) '[SHAPE{' ( shape ( ',' shape )* ) '},OPTIONS{' ( option ( ',' option )* )? '}]' )
-            // E:\\work\\srt\\antlr\\test\\plot.g:8:14: ( 'GRAPHICS2D' | 'GRAPHICS3D' ) '[SHAPE{' ( shape ( ',' shape )* ) '},OPTIONS{' ( option ( ',' option )* )? '}]'
+            // E:\\work\\srt\\antlr\\test\\plot.g:11:12: ( ( 'GRAPHICS2D' | 'GRAPHICS3D' ) shapes opts '}]' )
+            // E:\\work\\srt\\antlr\\test\\plot.g:11:14: ( 'GRAPHICS2D' | 'GRAPHICS3D' ) shapes opts '}]'
             {
-            root_0 = (Object)adaptor.nil();
+            root_0 = (CommonTree)adaptor.nil();
 
             set3=(Token)input.LT(1);
-            if ( (input.LA(1)>=20 && input.LA(1)<=21) ) {
+            if ( (input.LA(1)>=19 && input.LA(1)<=20) ) {
                 input.consume();
-                adaptor.addChild(root_0, (Object)adaptor.create(set3));
+                adaptor.addChild(root_0, (CommonTree)adaptor.create(set3));
                 state.errorRecovery=false;
             }
             else {
@@ -229,20 +229,87 @@ public class plotParser extends Parser {
                 throw mse;
             }
 
-            string_literal4=(Token)match(input,22,FOLLOW_22_in_expression40); 
-            string_literal4_tree = (Object)adaptor.create(string_literal4);
-            adaptor.addChild(root_0, string_literal4_tree);
-
-            // E:\\work\\srt\\antlr\\test\\plot.g:8:50: ( shape ( ',' shape )* )
-            // E:\\work\\srt\\antlr\\test\\plot.g:8:51: shape ( ',' shape )*
-            {
-            pushFollow(FOLLOW_shape_in_expression42);
-            shape5=shape();
+            pushFollow(FOLLOW_shapes_in_expression56);
+            shapes4=shapes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, shape5.getTree());
-            // E:\\work\\srt\\antlr\\test\\plot.g:8:56: ( ',' shape )*
+            adaptor.addChild(root_0, shapes4.getTree());
+            pushFollow(FOLLOW_opts_in_expression58);
+            opts5=opts();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, opts5.getTree());
+            string_literal6=(Token)match(input,21,FOLLOW_21_in_expression59); 
+            string_literal6_tree = (CommonTree)adaptor.create(string_literal6);
+            //adaptor.addChild(root_0, string_literal6_tree);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "expression"
+
+    public static class shapes_return extends ParserRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "shapes"
+    // E:\\work\\srt\\antlr\\test\\plot.g:12:1: shapes : '[SHAPE{' ( shape ( ',' shape )* ) ;
+    public final plotParser.shapes_return shapes() throws RecognitionException {
+        plotParser.shapes_return retval = new plotParser.shapes_return();
+        retval.start = input.LT(1);
+
+        CommonTree root_0 = null;
+
+        Token string_literal7=null;
+        Token char_literal9=null;
+        plotParser.shape_return shape8 = null;
+
+        plotParser.shape_return shape10 = null;
+
+
+        CommonTree string_literal7_tree=null;
+        CommonTree char_literal9_tree=null;
+
+        try {
+            // E:\\work\\srt\\antlr\\test\\plot.g:12:9: ( '[SHAPE{' ( shape ( ',' shape )* ) )
+            // E:\\work\\srt\\antlr\\test\\plot.g:12:10: '[SHAPE{' ( shape ( ',' shape )* )
+            {
+            root_0 = (CommonTree)adaptor.nil();
+
+            string_literal7=(Token)match(input,22,FOLLOW_22_in_shapes66);
+            string_literal7.setText("SHAPE");
+            string_literal7_tree = (CommonTree)adaptor.create(string_literal7);
+            root_0 = (CommonTree)adaptor.becomeRoot(string_literal7_tree, root_0);
+
+            // E:\\work\\srt\\antlr\\test\\plot.g:12:21: ( shape ( ',' shape )* )
+            // E:\\work\\srt\\antlr\\test\\plot.g:12:22: shape ( ',' shape )*
+            {
+            pushFollow(FOLLOW_shape_in_shapes70);
+            shape8=shape();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, shape8.getTree());
+            // E:\\work\\srt\\antlr\\test\\plot.g:12:27: ( ',' shape )*
             loop1:
             do {
                 int alt1=2;
@@ -255,18 +322,18 @@ public class plotParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // E:\\work\\srt\\antlr\\test\\plot.g:8:57: ',' shape
+            	    // E:\\work\\srt\\antlr\\test\\plot.g:12:28: ',' shape
             	    {
-            	    char_literal6=(Token)match(input,23,FOLLOW_23_in_expression44); 
-            	    char_literal6_tree = (Object)adaptor.create(char_literal6);
-            	    adaptor.addChild(root_0, char_literal6_tree);
+            	    char_literal9=(Token)match(input,23,FOLLOW_23_in_shapes72); 
+            	    char_literal9_tree = (CommonTree)adaptor.create(char_literal9);
+            	    //adaptor.addChild(root_0, char_literal9_tree);
 
-            	    pushFollow(FOLLOW_shape_in_expression45);
-            	    shape7=shape();
+            	    pushFollow(FOLLOW_shape_in_shapes73);
+            	    shape10=shape();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, shape7.getTree());
+            	    adaptor.addChild(root_0, shape10.getTree());
 
             	    }
             	    break;
@@ -279,58 +346,364 @@ public class plotParser extends Parser {
 
             }
 
-            string_literal8=(Token)match(input,24,FOLLOW_24_in_expression49); 
-            string_literal8_tree = (Object)adaptor.create(string_literal8);
-            adaptor.addChild(root_0, string_literal8_tree);
 
-            // E:\\work\\srt\\antlr\\test\\plot.g:8:80: ( option ( ',' option )* )?
-            int alt3=2;
-            int LA3_0 = input.LA(1);
-
-            if ( ((LA3_0>=29 && LA3_0<=39)) ) {
-                alt3=1;
             }
-            switch (alt3) {
+
+            retval.stop = input.LT(-1);
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "shapes"
+
+    public static class shape_return extends ParserRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "shape"
+    // E:\\work\\srt\\antlr\\test\\plot.g:14:1: shape : SHAPE_IDT '[' '{' pointes shapeopts '}]' ;
+    public final plotParser.shape_return shape() throws RecognitionException {
+        plotParser.shape_return retval = new plotParser.shape_return();
+        retval.start = input.LT(1);
+
+        CommonTree root_0 = null;
+
+        Token SHAPE_IDT11=null;
+        Token char_literal12=null;
+        Token char_literal13=null;
+        Token string_literal16=null;
+        plotParser.pointes_return pointes14 = null;
+
+        plotParser.shapeopts_return shapeopts15 = null;
+
+
+        CommonTree SHAPE_IDT11_tree=null;
+        CommonTree char_literal12_tree=null;
+        CommonTree char_literal13_tree=null;
+        CommonTree string_literal16_tree=null;
+
+        try {
+            // E:\\work\\srt\\antlr\\test\\plot.g:14:7: ( SHAPE_IDT '[' '{' pointes shapeopts '}]' )
+            // E:\\work\\srt\\antlr\\test\\plot.g:14:8: SHAPE_IDT '[' '{' pointes shapeopts '}]'
+            {
+            root_0 = (CommonTree)adaptor.nil();
+
+            SHAPE_IDT11=(Token)match(input,SHAPE_IDT,FOLLOW_SHAPE_IDT_in_shape91); 
+            SHAPE_IDT11_tree = (CommonTree)adaptor.create(SHAPE_IDT11);
+            root_0 = (CommonTree)adaptor.becomeRoot(SHAPE_IDT11_tree, root_0);
+
+            char_literal12=(Token)match(input,24,FOLLOW_24_in_shape93); 
+            char_literal12_tree = (CommonTree)adaptor.create(char_literal12);
+            //adaptor.addChild(root_0, char_literal12_tree);
+
+            char_literal13=(Token)match(input,25,FOLLOW_25_in_shape94); 
+            char_literal13_tree = (CommonTree)adaptor.create(char_literal13);
+            //adaptor.addChild(root_0, char_literal13_tree);
+
+            pushFollow(FOLLOW_pointes_in_shape95);
+            pointes14=pointes();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, pointes14.getTree());
+            pushFollow(FOLLOW_shapeopts_in_shape97);
+            shapeopts15=shapeopts();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, shapeopts15.getTree());
+            string_literal16=(Token)match(input,21,FOLLOW_21_in_shape98); 
+            string_literal16_tree = (CommonTree)adaptor.create(string_literal16);
+            //adaptor.addChild(root_0, string_literal16_tree);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "shape"
+
+    public static class pointes_return extends ParserRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "pointes"
+    // E:\\work\\srt\\antlr\\test\\plot.g:16:1: pointes : points ( ',' points )* ;
+    public final plotParser.pointes_return pointes() throws RecognitionException {
+        plotParser.pointes_return retval = new plotParser.pointes_return();
+        retval.start = input.LT(1);
+
+        CommonTree root_0 = null;
+
+        Token char_literal18=null;
+        plotParser.points_return points17 = null;
+
+        plotParser.points_return points19 = null;
+
+
+        CommonTree char_literal18_tree=null;
+
+        try {
+            // E:\\work\\srt\\antlr\\test\\plot.g:16:9: ( points ( ',' points )* )
+            // E:\\work\\srt\\antlr\\test\\plot.g:16:11: points ( ',' points )*
+            {
+            root_0 = (CommonTree)adaptor.nil();
+
+            pushFollow(FOLLOW_points_in_pointes108);
+            points17=points();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, points17.getTree());
+            // E:\\work\\srt\\antlr\\test\\plot.g:16:17: ( ',' points )*
+            loop2:
+            do {
+                int alt2=2;
+                int LA2_0 = input.LA(1);
+
+                if ( (LA2_0==23) ) {
+                    alt2=1;
+                }
+
+
+                switch (alt2) {
+            	case 1 :
+            	    // E:\\work\\srt\\antlr\\test\\plot.g:16:18: ',' points
+            	    {
+            	    char_literal18=(Token)match(input,23,FOLLOW_23_in_pointes110); 
+            	    char_literal18_tree = (CommonTree)adaptor.create(char_literal18);
+            	    //adaptor.addChild(root_0, char_literal18_tree);
+
+            	    pushFollow(FOLLOW_points_in_pointes111);
+            	    points19=points();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, points19.getTree());
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop2;
+                }
+            } while (true);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "pointes"
+
+    public static class points_return extends ParserRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "points"
+    // E:\\work\\srt\\antlr\\test\\plot.g:17:1: points : '(' FLOAT ',' FLOAT ',' FLOAT ')' ;
+    public final plotParser.points_return points() throws RecognitionException {
+        plotParser.points_return retval = new plotParser.points_return();
+        retval.start = input.LT(1);
+
+        CommonTree root_0 = null;
+
+        Token char_literal20=null;
+        Token FLOAT21=null;
+        Token char_literal22=null;
+        Token FLOAT23=null;
+        Token char_literal24=null;
+        Token FLOAT25=null;
+        Token char_literal26=null;
+
+        CommonTree char_literal20_tree=null;
+        CommonTree FLOAT21_tree=null;
+        CommonTree char_literal22_tree=null;
+        CommonTree FLOAT23_tree=null;
+        CommonTree char_literal24_tree=null;
+        CommonTree FLOAT25_tree=null;
+        CommonTree char_literal26_tree=null;
+
+        try {
+            // E:\\work\\srt\\antlr\\test\\plot.g:17:9: ( '(' FLOAT ',' FLOAT ',' FLOAT ')' )
+            // E:\\work\\srt\\antlr\\test\\plot.g:17:10: '(' FLOAT ',' FLOAT ',' FLOAT ')'
+            {
+            root_0 = (CommonTree)adaptor.nil();
+
+            char_literal20=(Token)match(input,26,FOLLOW_26_in_points120); 
+            char_literal20.setText("POINT");
+            char_literal20_tree = (CommonTree)adaptor.create(char_literal20);
+            root_0 = (CommonTree)adaptor.becomeRoot(char_literal20_tree, root_0);
+
+            FLOAT21=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_points122); 
+            FLOAT21_tree = (CommonTree)adaptor.create(FLOAT21);
+            adaptor.addChild(root_0, FLOAT21_tree);
+
+            char_literal22=(Token)match(input,23,FOLLOW_23_in_points123); 
+            char_literal22_tree = (CommonTree)adaptor.create(char_literal22);
+            //adaptor.addChild(root_0, char_literal22_tree);
+
+            FLOAT23=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_points124); 
+            FLOAT23_tree = (CommonTree)adaptor.create(FLOAT23);
+            adaptor.addChild(root_0, FLOAT23_tree);
+
+            char_literal24=(Token)match(input,23,FOLLOW_23_in_points125); 
+            char_literal24_tree = (CommonTree)adaptor.create(char_literal24);
+            //adaptor.addChild(root_0, char_literal24_tree);
+
+            FLOAT25=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_points126); 
+            FLOAT25_tree = (CommonTree)adaptor.create(FLOAT25);
+            adaptor.addChild(root_0, FLOAT25_tree);
+
+            char_literal26=(Token)match(input,27,FOLLOW_27_in_points127); 
+            char_literal26_tree = (CommonTree)adaptor.create(char_literal26);
+            //adaptor.addChild(root_0, char_literal26_tree);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "points"
+
+    public static class shapeopts_return extends ParserRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "shapeopts"
+    // E:\\work\\srt\\antlr\\test\\plot.g:19:1: shapeopts : '},OPTIONS{' ( shapeoptions ( ',' shapeoptions )* )? ;
+    public final plotParser.shapeopts_return shapeopts() throws RecognitionException {
+        plotParser.shapeopts_return retval = new plotParser.shapeopts_return();
+        retval.start = input.LT(1);
+
+        CommonTree root_0 = null;
+
+        Token string_literal27=null;
+        Token char_literal29=null;
+        plotParser.shapeoptions_return shapeoptions28 = null;
+
+        plotParser.shapeoptions_return shapeoptions30 = null;
+
+
+        CommonTree string_literal27_tree=null;
+        CommonTree char_literal29_tree=null;
+
+        try {
+            // E:\\work\\srt\\antlr\\test\\plot.g:19:10: ( '},OPTIONS{' ( shapeoptions ( ',' shapeoptions )* )? )
+            // E:\\work\\srt\\antlr\\test\\plot.g:19:11: '},OPTIONS{' ( shapeoptions ( ',' shapeoptions )* )?
+            {
+            root_0 = (CommonTree)adaptor.nil();
+
+            string_literal27=(Token)match(input,28,FOLLOW_28_in_shapeopts141); 
+            string_literal27.setText("OPTIONS");
+            string_literal27_tree = (CommonTree)adaptor.create(string_literal27);
+            root_0 = (CommonTree)adaptor.becomeRoot(string_literal27_tree, root_0);
+
+            // E:\\work\\srt\\antlr\\test\\plot.g:19:25: ( shapeoptions ( ',' shapeoptions )* )?
+            int alt4=2;
+            int LA4_0 = input.LA(1);
+
+            if ( (LA4_0==VAR) ) {
+                alt4=1;
+            }
+            switch (alt4) {
                 case 1 :
-                    // E:\\work\\srt\\antlr\\test\\plot.g:8:81: option ( ',' option )*
+                    // E:\\work\\srt\\antlr\\test\\plot.g:19:26: shapeoptions ( ',' shapeoptions )*
                     {
-                    pushFollow(FOLLOW_option_in_expression51);
-                    option9=option();
+                    pushFollow(FOLLOW_shapeoptions_in_shapeopts145);
+                    shapeoptions28=shapeoptions();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, option9.getTree());
-                    // E:\\work\\srt\\antlr\\test\\plot.g:8:87: ( ',' option )*
-                    loop2:
+                    adaptor.addChild(root_0, shapeoptions28.getTree());
+                    // E:\\work\\srt\\antlr\\test\\plot.g:19:38: ( ',' shapeoptions )*
+                    loop3:
                     do {
-                        int alt2=2;
-                        int LA2_0 = input.LA(1);
+                        int alt3=2;
+                        int LA3_0 = input.LA(1);
 
-                        if ( (LA2_0==23) ) {
-                            alt2=1;
+                        if ( (LA3_0==23) ) {
+                            alt3=1;
                         }
 
 
-                        switch (alt2) {
+                        switch (alt3) {
                     	case 1 :
-                    	    // E:\\work\\srt\\antlr\\test\\plot.g:8:88: ',' option
+                    	    // E:\\work\\srt\\antlr\\test\\plot.g:19:39: ',' shapeoptions
                     	    {
-                    	    char_literal10=(Token)match(input,23,FOLLOW_23_in_expression53); 
-                    	    char_literal10_tree = (Object)adaptor.create(char_literal10);
-                    	    adaptor.addChild(root_0, char_literal10_tree);
+                    	    char_literal29=(Token)match(input,23,FOLLOW_23_in_shapeopts147); 
+                    	    char_literal29_tree = (CommonTree)adaptor.create(char_literal29);
+                    	    //adaptor.addChild(root_0, char_literal29_tree);
 
-                    	    pushFollow(FOLLOW_option_in_expression54);
-                    	    option11=option();
+                    	    pushFollow(FOLLOW_shapeoptions_in_shapeopts148);
+                    	    shapeoptions30=shapeoptions();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, option11.getTree());
+                    	    adaptor.addChild(root_0, shapeoptions30.getTree());
 
                     	    }
                     	    break;
 
                     	default :
-                    	    break loop2;
+                    	    break loop3;
                         }
                     } while (true);
 
@@ -340,70 +713,66 @@ public class plotParser extends Parser {
 
             }
 
-            string_literal12=(Token)match(input,25,FOLLOW_25_in_expression59); 
-            string_literal12_tree = (Object)adaptor.create(string_literal12);
-            adaptor.addChild(root_0, string_literal12_tree);
-
 
             }
 
             retval.stop = input.LT(-1);
 
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
             adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
 
         }
         catch (RecognitionException re) {
             reportError(re);
             recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
 
         }
         finally {
         }
         return retval;
     }
-    // $ANTLR end "expression"
+    // $ANTLR end "shapeopts"
 
     public static class shapeoptions_return extends ParserRuleReturnScope {
-        Object tree;
+        CommonTree tree;
         public Object getTree() { return tree; }
     };
 
     // $ANTLR start "shapeoptions"
-    // E:\\work\\srt\\antlr\\test\\plot.g:27:1: shapeoptions : VAR '=' ( INT | FLOAT | COLOR | JOINFORM | SIZE | VERTEXCOLORS ) ;
+    // E:\\work\\srt\\antlr\\test\\plot.g:21:1: shapeoptions : VAR '=' ( INT | FLOAT | COLOR | JOINFORM | SIZE | VERTEXCOLORS ) ;
     public final plotParser.shapeoptions_return shapeoptions() throws RecognitionException {
         plotParser.shapeoptions_return retval = new plotParser.shapeoptions_return();
         retval.start = input.LT(1);
 
-        Object root_0 = null;
+        CommonTree root_0 = null;
 
-        Token VAR13=null;
-        Token char_literal14=null;
-        Token set15=null;
+        Token VAR31=null;
+        Token char_literal32=null;
+        Token set33=null;
 
-        Object VAR13_tree=null;
-        Object char_literal14_tree=null;
-        Object set15_tree=null;
+        CommonTree VAR31_tree=null;
+        CommonTree char_literal32_tree=null;
+        CommonTree set33_tree=null;
 
         try {
-            // E:\\work\\srt\\antlr\\test\\plot.g:27:13: ( VAR '=' ( INT | FLOAT | COLOR | JOINFORM | SIZE | VERTEXCOLORS ) )
-            // E:\\work\\srt\\antlr\\test\\plot.g:27:15: VAR '=' ( INT | FLOAT | COLOR | JOINFORM | SIZE | VERTEXCOLORS )
+            // E:\\work\\srt\\antlr\\test\\plot.g:21:13: ( VAR '=' ( INT | FLOAT | COLOR | JOINFORM | SIZE | VERTEXCOLORS ) )
+            // E:\\work\\srt\\antlr\\test\\plot.g:21:14: VAR '=' ( INT | FLOAT | COLOR | JOINFORM | SIZE | VERTEXCOLORS )
             {
-            root_0 = (Object)adaptor.nil();
+            root_0 = (CommonTree)adaptor.nil();
 
-            VAR13=(Token)match(input,VAR,FOLLOW_VAR_in_shapeoptions294); 
-            VAR13_tree = (Object)adaptor.create(VAR13);
-            adaptor.addChild(root_0, VAR13_tree);
+            VAR31=(Token)match(input,VAR,FOLLOW_VAR_in_shapeoptions160); 
+            VAR31_tree = (CommonTree)adaptor.create(VAR31);
+            root_0 = (CommonTree)adaptor.becomeRoot(VAR31_tree, root_0);
 
-            char_literal14=(Token)match(input,26,FOLLOW_26_in_shapeoptions295); 
-            char_literal14_tree = (Object)adaptor.create(char_literal14);
-            adaptor.addChild(root_0, char_literal14_tree);
+            char_literal32=(Token)match(input,29,FOLLOW_29_in_shapeoptions162); 
+            char_literal32_tree = (CommonTree)adaptor.create(char_literal32);
+            //adaptor.addChild(root_0, char_literal32_tree);
 
-            set15=(Token)input.LT(1);
-            if ( input.LA(1)==FLOAT||(input.LA(1)>=SIZE && input.LA(1)<=INT) ) {
+            set33=(Token)input.LT(1);
+            if ( input.LA(1)==FLOAT||(input.LA(1)>=INT && input.LA(1)<=VERTEXCOLORS) ) {
                 input.consume();
-                adaptor.addChild(root_0, (Object)adaptor.create(set15));
+                adaptor.addChild(root_0, (CommonTree)adaptor.create(set33));
                 state.errorRecovery=false;
             }
             else {
@@ -416,14 +785,14 @@ public class plotParser extends Parser {
 
             retval.stop = input.LT(-1);
 
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
             adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
 
         }
         catch (RecognitionException re) {
             reportError(re);
             recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
 
         }
         finally {
@@ -432,119 +801,58 @@ public class plotParser extends Parser {
     }
     // $ANTLR end "shapeoptions"
 
-    public static class shape_return extends ParserRuleReturnScope {
-        Object tree;
+    public static class opts_return extends ParserRuleReturnScope {
+        CommonTree tree;
         public Object getTree() { return tree; }
     };
 
-    // $ANTLR start "shape"
-    // E:\\work\\srt\\antlr\\test\\plot.g:30:1: shape : SHAPE_IDT '[' '{' POINTS ( ',' POINTS )* '},OPTIONS{' ( shapeoptions ( ',' shapeoptions )* )? '}]' ;
-    public final plotParser.shape_return shape() throws RecognitionException {
-        plotParser.shape_return retval = new plotParser.shape_return();
+    // $ANTLR start "opts"
+    // E:\\work\\srt\\antlr\\test\\plot.g:23:1: opts : '},OPTIONS{' ( option ( ',' option )* )? ;
+    public final plotParser.opts_return opts() throws RecognitionException {
+        plotParser.opts_return retval = new plotParser.opts_return();
         retval.start = input.LT(1);
 
-        Object root_0 = null;
+        CommonTree root_0 = null;
 
-        Token SHAPE_IDT16=null;
-        Token char_literal17=null;
-        Token char_literal18=null;
-        Token POINTS19=null;
-        Token char_literal20=null;
-        Token POINTS21=null;
-        Token string_literal22=null;
-        Token char_literal24=null;
-        Token string_literal26=null;
-        plotParser.shapeoptions_return shapeoptions23 = null;
+        Token string_literal34=null;
+        Token char_literal36=null;
+        plotParser.option_return option35 = null;
 
-        plotParser.shapeoptions_return shapeoptions25 = null;
+        plotParser.option_return option37 = null;
 
 
-        Object SHAPE_IDT16_tree=null;
-        Object char_literal17_tree=null;
-        Object char_literal18_tree=null;
-        Object POINTS19_tree=null;
-        Object char_literal20_tree=null;
-        Object POINTS21_tree=null;
-        Object string_literal22_tree=null;
-        Object char_literal24_tree=null;
-        Object string_literal26_tree=null;
+        CommonTree string_literal34_tree=null;
+        CommonTree char_literal36_tree=null;
 
         try {
-            // E:\\work\\srt\\antlr\\test\\plot.g:30:7: ( SHAPE_IDT '[' '{' POINTS ( ',' POINTS )* '},OPTIONS{' ( shapeoptions ( ',' shapeoptions )* )? '}]' )
-            // E:\\work\\srt\\antlr\\test\\plot.g:30:8: SHAPE_IDT '[' '{' POINTS ( ',' POINTS )* '},OPTIONS{' ( shapeoptions ( ',' shapeoptions )* )? '}]'
+            // E:\\work\\srt\\antlr\\test\\plot.g:23:6: ( '},OPTIONS{' ( option ( ',' option )* )? )
+            // E:\\work\\srt\\antlr\\test\\plot.g:23:7: '},OPTIONS{' ( option ( ',' option )* )?
             {
-            root_0 = (Object)adaptor.nil();
+            root_0 = (CommonTree)adaptor.nil();
 
-            SHAPE_IDT16=(Token)match(input,SHAPE_IDT,FOLLOW_SHAPE_IDT_in_shape318); 
-            SHAPE_IDT16_tree = (Object)adaptor.create(SHAPE_IDT16);
-            adaptor.addChild(root_0, SHAPE_IDT16_tree);
+            string_literal34=(Token)match(input,28,FOLLOW_28_in_opts183); 
+            string_literal34.setText("OPTIONS");
+            string_literal34_tree = (CommonTree)adaptor.create(string_literal34);
+            root_0 = (CommonTree)adaptor.becomeRoot(string_literal34_tree, root_0);
 
-            char_literal17=(Token)match(input,27,FOLLOW_27_in_shape320); 
-            char_literal17_tree = (Object)adaptor.create(char_literal17);
-            adaptor.addChild(root_0, char_literal17_tree);
-
-            char_literal18=(Token)match(input,28,FOLLOW_28_in_shape321); 
-            char_literal18_tree = (Object)adaptor.create(char_literal18);
-            adaptor.addChild(root_0, char_literal18_tree);
-
-            POINTS19=(Token)match(input,POINTS,FOLLOW_POINTS_in_shape323); 
-            POINTS19_tree = (Object)adaptor.create(POINTS19);
-            adaptor.addChild(root_0, POINTS19_tree);
-
-            // E:\\work\\srt\\antlr\\test\\plot.g:30:31: ( ',' POINTS )*
-            loop4:
-            do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
-
-                if ( (LA4_0==23) ) {
-                    alt4=1;
-                }
-
-
-                switch (alt4) {
-            	case 1 :
-            	    // E:\\work\\srt\\antlr\\test\\plot.g:30:32: ',' POINTS
-            	    {
-            	    char_literal20=(Token)match(input,23,FOLLOW_23_in_shape325); 
-            	    char_literal20_tree = (Object)adaptor.create(char_literal20);
-            	    adaptor.addChild(root_0, char_literal20_tree);
-
-            	    POINTS21=(Token)match(input,POINTS,FOLLOW_POINTS_in_shape326); 
-            	    POINTS21_tree = (Object)adaptor.create(POINTS21);
-            	    adaptor.addChild(root_0, POINTS21_tree);
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop4;
-                }
-            } while (true);
-
-            string_literal22=(Token)match(input,24,FOLLOW_24_in_shape329); 
-            string_literal22_tree = (Object)adaptor.create(string_literal22);
-            adaptor.addChild(root_0, string_literal22_tree);
-
-            // E:\\work\\srt\\antlr\\test\\plot.g:30:55: ( shapeoptions ( ',' shapeoptions )* )?
+            // E:\\work\\srt\\antlr\\test\\plot.g:23:21: ( option ( ',' option )* )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==VAR) ) {
+            if ( ((LA6_0>=30 && LA6_0<=41)) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
-                    // E:\\work\\srt\\antlr\\test\\plot.g:30:56: shapeoptions ( ',' shapeoptions )*
+                    // E:\\work\\srt\\antlr\\test\\plot.g:23:22: option ( ',' option )*
                     {
-                    pushFollow(FOLLOW_shapeoptions_in_shape331);
-                    shapeoptions23=shapeoptions();
+                    pushFollow(FOLLOW_option_in_opts187);
+                    option35=option();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, shapeoptions23.getTree());
-                    // E:\\work\\srt\\antlr\\test\\plot.g:30:68: ( ',' shapeoptions )*
+                    adaptor.addChild(root_0, option35.getTree());
+                    // E:\\work\\srt\\antlr\\test\\plot.g:23:28: ( ',' option )*
                     loop5:
                     do {
                         int alt5=2;
@@ -557,18 +865,18 @@ public class plotParser extends Parser {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // E:\\work\\srt\\antlr\\test\\plot.g:30:69: ',' shapeoptions
+                    	    // E:\\work\\srt\\antlr\\test\\plot.g:23:29: ',' option
                     	    {
-                    	    char_literal24=(Token)match(input,23,FOLLOW_23_in_shape333); 
-                    	    char_literal24_tree = (Object)adaptor.create(char_literal24);
-                    	    adaptor.addChild(root_0, char_literal24_tree);
+                    	    char_literal36=(Token)match(input,23,FOLLOW_23_in_opts189); 
+                    	    char_literal36_tree = (CommonTree)adaptor.create(char_literal36);
+                    	    //adaptor.addChild(root_0, char_literal36_tree);
 
-                    	    pushFollow(FOLLOW_shapeoptions_in_shape334);
-                    	    shapeoptions25=shapeoptions();
+                    	    pushFollow(FOLLOW_option_in_opts190);
+                    	    option37=option();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, shapeoptions25.getTree());
+                    	    adaptor.addChild(root_0, option37.getTree());
 
                     	    }
                     	    break;
@@ -584,94 +892,91 @@ public class plotParser extends Parser {
 
             }
 
-            string_literal26=(Token)match(input,25,FOLLOW_25_in_shape339); 
-            string_literal26_tree = (Object)adaptor.create(string_literal26);
-            adaptor.addChild(root_0, string_literal26_tree);
-
 
             }
 
             retval.stop = input.LT(-1);
 
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
             adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
 
         }
         catch (RecognitionException re) {
             reportError(re);
             recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
 
         }
         finally {
         }
         return retval;
     }
-    // $ANTLR end "shape"
+    // $ANTLR end "opts"
 
     public static class option_return extends ParserRuleReturnScope {
-        Object tree;
+        CommonTree tree;
         public Object getTree() { return tree; }
     };
 
     // $ANTLR start "option"
-    // E:\\work\\srt\\antlr\\test\\plot.g:34:1: option : ( 'ImageSize' | 'ImageMargins' | 'XRatio' | 'YRatio' | 'Axes' | 'AxesOriginX' | 'AxesOriginY' | 'PlotRange' | 'FillType' | 'FrameType' | 'BackColor' ) '=' ( POINTS | '{' POINTS ',' POINTS '}' | '{' POINTS ',' POINTS ',' POINTS '}' | FLOAT | STRING | INT | COLOR ) ;
+    // E:\\work\\srt\\antlr\\test\\plot.g:24:1: option : ( 'ImageSize' | 'ImageMargins' | 'XRatio' | 'YRatio' | 'Axes' | 'AxesOriginX' | 'AxesOriginY' | 'PlotRangeX' | 'PlotRangeY' | 'FillType' | 'FrameType' | 'BackColor' ) '=' ( points | '{' points ',' points '}' | '{' points ',' points ',' points '}' | FLOAT | STRING | INT | COLOR ) ;
     public final plotParser.option_return option() throws RecognitionException {
         plotParser.option_return retval = new plotParser.option_return();
         retval.start = input.LT(1);
 
-        Object root_0 = null;
+        CommonTree root_0 = null;
 
-        Token set27=null;
-        Token char_literal28=null;
-        Token POINTS29=null;
-        Token char_literal30=null;
-        Token POINTS31=null;
-        Token char_literal32=null;
-        Token POINTS33=null;
-        Token char_literal34=null;
-        Token char_literal35=null;
-        Token POINTS36=null;
-        Token char_literal37=null;
-        Token POINTS38=null;
+        Token set38=null;
         Token char_literal39=null;
-        Token POINTS40=null;
         Token char_literal41=null;
-        Token FLOAT42=null;
-        Token STRING43=null;
-        Token INT44=null;
-        Token COLOR45=null;
+        Token char_literal43=null;
+        Token char_literal45=null;
+        Token char_literal46=null;
+        Token char_literal48=null;
+        Token char_literal50=null;
+        Token char_literal52=null;
+        Token FLOAT53=null;
+        Token STRING54=null;
+        Token INT55=null;
+        Token COLOR56=null;
+        plotParser.points_return points40 = null;
 
-        Object set27_tree=null;
-        Object char_literal28_tree=null;
-        Object POINTS29_tree=null;
-        Object char_literal30_tree=null;
-        Object POINTS31_tree=null;
-        Object char_literal32_tree=null;
-        Object POINTS33_tree=null;
-        Object char_literal34_tree=null;
-        Object char_literal35_tree=null;
-        Object POINTS36_tree=null;
-        Object char_literal37_tree=null;
-        Object POINTS38_tree=null;
-        Object char_literal39_tree=null;
-        Object POINTS40_tree=null;
-        Object char_literal41_tree=null;
-        Object FLOAT42_tree=null;
-        Object STRING43_tree=null;
-        Object INT44_tree=null;
-        Object COLOR45_tree=null;
+        plotParser.points_return points42 = null;
+
+        plotParser.points_return points44 = null;
+
+        plotParser.points_return points47 = null;
+
+        plotParser.points_return points49 = null;
+
+        plotParser.points_return points51 = null;
+
+
+        CommonTree set38_tree=null;
+        CommonTree char_literal39_tree=null;
+        CommonTree char_literal41_tree=null;
+        CommonTree char_literal43_tree=null;
+        CommonTree char_literal45_tree=null;
+        CommonTree char_literal46_tree=null;
+        CommonTree char_literal48_tree=null;
+        CommonTree char_literal50_tree=null;
+        CommonTree char_literal52_tree=null;
+        CommonTree FLOAT53_tree=null;
+        CommonTree STRING54_tree=null;
+        CommonTree INT55_tree=null;
+        CommonTree COLOR56_tree=null;
 
         try {
-            // E:\\work\\srt\\antlr\\test\\plot.g:34:8: ( ( 'ImageSize' | 'ImageMargins' | 'XRatio' | 'YRatio' | 'Axes' | 'AxesOriginX' | 'AxesOriginY' | 'PlotRange' | 'FillType' | 'FrameType' | 'BackColor' ) '=' ( POINTS | '{' POINTS ',' POINTS '}' | '{' POINTS ',' POINTS ',' POINTS '}' | FLOAT | STRING | INT | COLOR ) )
-            // E:\\work\\srt\\antlr\\test\\plot.g:34:9: ( 'ImageSize' | 'ImageMargins' | 'XRatio' | 'YRatio' | 'Axes' | 'AxesOriginX' | 'AxesOriginY' | 'PlotRange' | 'FillType' | 'FrameType' | 'BackColor' ) '=' ( POINTS | '{' POINTS ',' POINTS '}' | '{' POINTS ',' POINTS ',' POINTS '}' | FLOAT | STRING | INT | COLOR )
+            // E:\\work\\srt\\antlr\\test\\plot.g:24:8: ( ( 'ImageSize' | 'ImageMargins' | 'XRatio' | 'YRatio' | 'Axes' | 'AxesOriginX' | 'AxesOriginY' | 'PlotRangeX' | 'PlotRangeY' | 'FillType' | 'FrameType' | 'BackColor' ) '=' ( points | '{' points ',' points '}' | '{' points ',' points ',' points '}' | FLOAT | STRING | INT | COLOR ) )
+            // E:\\work\\srt\\antlr\\test\\plot.g:24:9: ( 'ImageSize' | 'ImageMargins' | 'XRatio' | 'YRatio' | 'Axes' | 'AxesOriginX' | 'AxesOriginY' | 'PlotRangeX' | 'PlotRangeY' | 'FillType' | 'FrameType' | 'BackColor' ) '=' ( points | '{' points ',' points '}' | '{' points ',' points ',' points '}' | FLOAT | STRING | INT | COLOR )
             {
-            root_0 = (Object)adaptor.nil();
+            root_0 = (CommonTree)adaptor.nil();
 
-            set27=(Token)input.LT(1);
-            if ( (input.LA(1)>=29 && input.LA(1)<=39) ) {
+            set38=(Token)input.LT(1);
+            set38=(Token)input.LT(1);
+            if ( (input.LA(1)>=30 && input.LA(1)<=41) ) {
                 input.consume();
-                adaptor.addChild(root_0, (Object)adaptor.create(set27));
+                root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set38), root_0);
                 state.errorRecovery=false;
             }
             else {
@@ -679,120 +984,132 @@ public class plotParser extends Parser {
                 throw mse;
             }
 
-            char_literal28=(Token)match(input,26,FOLLOW_26_in_option372); 
-            char_literal28_tree = (Object)adaptor.create(char_literal28);
-            adaptor.addChild(root_0, char_literal28_tree);
+            char_literal39=(Token)match(input,29,FOLLOW_29_in_option238); 
+            char_literal39_tree = (CommonTree)adaptor.create(char_literal39);
+            //adaptor.addChild(root_0, char_literal39_tree);
 
-            // E:\\work\\srt\\antlr\\test\\plot.g:35:2: ( POINTS | '{' POINTS ',' POINTS '}' | '{' POINTS ',' POINTS ',' POINTS '}' | FLOAT | STRING | INT | COLOR )
+            // E:\\work\\srt\\antlr\\test\\plot.g:26:2: ( points | '{' points ',' points '}' | '{' points ',' points ',' points '}' | FLOAT | STRING | INT | COLOR )
             int alt7=7;
             alt7 = dfa7.predict(input);
             switch (alt7) {
                 case 1 :
-                    // E:\\work\\srt\\antlr\\test\\plot.g:35:3: POINTS
+                    // E:\\work\\srt\\antlr\\test\\plot.g:26:3: points
                     {
-                    POINTS29=(Token)match(input,POINTS,FOLLOW_POINTS_in_option376); 
-                    POINTS29_tree = (Object)adaptor.create(POINTS29);
-                    adaptor.addChild(root_0, POINTS29_tree);
+                    pushFollow(FOLLOW_points_in_option242);
+                    points40=points();
 
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, points40.getTree());
 
                     }
                     break;
                 case 2 :
-                    // E:\\work\\srt\\antlr\\test\\plot.g:35:10: '{' POINTS ',' POINTS '}'
+                    // E:\\work\\srt\\antlr\\test\\plot.g:26:10: '{' points ',' points '}'
                     {
-                    char_literal30=(Token)match(input,28,FOLLOW_28_in_option378); 
-                    char_literal30_tree = (Object)adaptor.create(char_literal30);
-                    adaptor.addChild(root_0, char_literal30_tree);
+                    char_literal41=(Token)match(input,25,FOLLOW_25_in_option244); 
+                    char_literal41_tree = (CommonTree)adaptor.create(char_literal41);
+                    //adaptor.addChild(root_0, char_literal41_tree);
 
-                    POINTS31=(Token)match(input,POINTS,FOLLOW_POINTS_in_option379); 
-                    POINTS31_tree = (Object)adaptor.create(POINTS31);
-                    adaptor.addChild(root_0, POINTS31_tree);
+                    pushFollow(FOLLOW_points_in_option245);
+                    points42=points();
 
-                    char_literal32=(Token)match(input,23,FOLLOW_23_in_option380); 
-                    char_literal32_tree = (Object)adaptor.create(char_literal32);
-                    adaptor.addChild(root_0, char_literal32_tree);
+                    state._fsp--;
 
-                    POINTS33=(Token)match(input,POINTS,FOLLOW_POINTS_in_option381); 
-                    POINTS33_tree = (Object)adaptor.create(POINTS33);
-                    adaptor.addChild(root_0, POINTS33_tree);
+                    adaptor.addChild(root_0, points42.getTree());
+                    char_literal43=(Token)match(input,23,FOLLOW_23_in_option246); 
+                    char_literal43_tree = (CommonTree)adaptor.create(char_literal43);
+                    adaptor.addChild(root_0, char_literal43_tree);
 
-                    char_literal34=(Token)match(input,40,FOLLOW_40_in_option382); 
-                    char_literal34_tree = (Object)adaptor.create(char_literal34);
-                    adaptor.addChild(root_0, char_literal34_tree);
+                    pushFollow(FOLLOW_points_in_option247);
+                    points44=points();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, points44.getTree());
+                    char_literal45=(Token)match(input,42,FOLLOW_42_in_option248); 
+                    char_literal45_tree = (CommonTree)adaptor.create(char_literal45);
+                    adaptor.addChild(root_0, char_literal45_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // E:\\work\\srt\\antlr\\test\\plot.g:35:32: '{' POINTS ',' POINTS ',' POINTS '}'
+                    // E:\\work\\srt\\antlr\\test\\plot.g:26:32: '{' points ',' points ',' points '}'
                     {
-                    char_literal35=(Token)match(input,28,FOLLOW_28_in_option384); 
-                    char_literal35_tree = (Object)adaptor.create(char_literal35);
-                    adaptor.addChild(root_0, char_literal35_tree);
+                    char_literal46=(Token)match(input,25,FOLLOW_25_in_option250); 
+                    char_literal46_tree = (CommonTree)adaptor.create(char_literal46);
+                    adaptor.addChild(root_0, char_literal46_tree);
 
-                    POINTS36=(Token)match(input,POINTS,FOLLOW_POINTS_in_option385); 
-                    POINTS36_tree = (Object)adaptor.create(POINTS36);
-                    adaptor.addChild(root_0, POINTS36_tree);
+                    pushFollow(FOLLOW_points_in_option251);
+                    points47=points();
 
-                    char_literal37=(Token)match(input,23,FOLLOW_23_in_option386); 
-                    char_literal37_tree = (Object)adaptor.create(char_literal37);
-                    adaptor.addChild(root_0, char_literal37_tree);
+                    state._fsp--;
 
-                    POINTS38=(Token)match(input,POINTS,FOLLOW_POINTS_in_option387); 
-                    POINTS38_tree = (Object)adaptor.create(POINTS38);
-                    adaptor.addChild(root_0, POINTS38_tree);
+                    adaptor.addChild(root_0, points47.getTree());
+                    char_literal48=(Token)match(input,23,FOLLOW_23_in_option252); 
+                    char_literal48_tree = (CommonTree)adaptor.create(char_literal48);
+                    adaptor.addChild(root_0, char_literal48_tree);
 
-                    char_literal39=(Token)match(input,23,FOLLOW_23_in_option388); 
-                    char_literal39_tree = (Object)adaptor.create(char_literal39);
-                    adaptor.addChild(root_0, char_literal39_tree);
+                    pushFollow(FOLLOW_points_in_option253);
+                    points49=points();
 
-                    POINTS40=(Token)match(input,POINTS,FOLLOW_POINTS_in_option389); 
-                    POINTS40_tree = (Object)adaptor.create(POINTS40);
-                    adaptor.addChild(root_0, POINTS40_tree);
+                    state._fsp--;
 
-                    char_literal41=(Token)match(input,40,FOLLOW_40_in_option390); 
-                    char_literal41_tree = (Object)adaptor.create(char_literal41);
-                    adaptor.addChild(root_0, char_literal41_tree);
+                    adaptor.addChild(root_0, points49.getTree());
+                    char_literal50=(Token)match(input,23,FOLLOW_23_in_option254); 
+                    char_literal50_tree = (CommonTree)adaptor.create(char_literal50);
+                    adaptor.addChild(root_0, char_literal50_tree);
+
+                    pushFollow(FOLLOW_points_in_option255);
+                    points51=points();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, points51.getTree());
+                    char_literal52=(Token)match(input,42,FOLLOW_42_in_option256); 
+                    char_literal52_tree = (CommonTree)adaptor.create(char_literal52);
+                    adaptor.addChild(root_0, char_literal52_tree);
 
 
                     }
                     break;
                 case 4 :
-                    // E:\\work\\srt\\antlr\\test\\plot.g:35:63: FLOAT
+                    // E:\\work\\srt\\antlr\\test\\plot.g:26:63: FLOAT
                     {
-                    FLOAT42=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_option392); 
-                    FLOAT42_tree = (Object)adaptor.create(FLOAT42);
-                    adaptor.addChild(root_0, FLOAT42_tree);
+                    FLOAT53=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_option258); 
+                    FLOAT53_tree = (CommonTree)adaptor.create(FLOAT53);
+                    adaptor.addChild(root_0, FLOAT53_tree);
 
 
                     }
                     break;
                 case 5 :
-                    // E:\\work\\srt\\antlr\\test\\plot.g:35:69: STRING
+                    // E:\\work\\srt\\antlr\\test\\plot.g:26:69: STRING
                     {
-                    STRING43=(Token)match(input,STRING,FOLLOW_STRING_in_option394); 
-                    STRING43_tree = (Object)adaptor.create(STRING43);
-                    adaptor.addChild(root_0, STRING43_tree);
+                    STRING54=(Token)match(input,STRING,FOLLOW_STRING_in_option260); 
+                    STRING54_tree = (CommonTree)adaptor.create(STRING54);
+                    adaptor.addChild(root_0, STRING54_tree);
 
 
                     }
                     break;
                 case 6 :
-                    // E:\\work\\srt\\antlr\\test\\plot.g:35:76: INT
+                    // E:\\work\\srt\\antlr\\test\\plot.g:26:76: INT
                     {
-                    INT44=(Token)match(input,INT,FOLLOW_INT_in_option396); 
-                    INT44_tree = (Object)adaptor.create(INT44);
-                    adaptor.addChild(root_0, INT44_tree);
+                    INT55=(Token)match(input,INT,FOLLOW_INT_in_option262); 
+                    INT55_tree = (CommonTree)adaptor.create(INT55);
+                    adaptor.addChild(root_0, INT55_tree);
 
 
                     }
                     break;
                 case 7 :
-                    // E:\\work\\srt\\antlr\\test\\plot.g:35:80: COLOR
+                    // E:\\work\\srt\\antlr\\test\\plot.g:26:80: COLOR
                     {
-                    COLOR45=(Token)match(input,COLOR,FOLLOW_COLOR_in_option398); 
-                    COLOR45_tree = (Object)adaptor.create(COLOR45);
-                    adaptor.addChild(root_0, COLOR45_tree);
+                    COLOR56=(Token)match(input,COLOR,FOLLOW_COLOR_in_option264); 
+                    COLOR56_tree = (CommonTree)adaptor.create(COLOR56);
+                    adaptor.addChild(root_0, COLOR56_tree);
 
 
                     }
@@ -805,14 +1122,14 @@ public class plotParser extends Parser {
 
             retval.stop = input.LT(-1);
 
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
             adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
 
         }
         catch (RecognitionException re) {
             reportError(re);
             recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
 
         }
         finally {
@@ -826,19 +1143,21 @@ public class plotParser extends Parser {
 
     protected DFA7 dfa7 = new DFA7(this);
     static final String DFA7_eotS =
-        "\14\uffff";
+        "\30\uffff";
     static final String DFA7_eofS =
-        "\14\uffff";
+        "\30\uffff";
     static final String DFA7_minS =
-        "\1\5\1\uffff\1\6\4\uffff\1\27\1\6\1\27\2\uffff";
+        "\1\5\1\uffff\1\32\4\uffff\1\5\1\27\1\5\1\27\1\5\1\33\1\27\1\32"+
+        "\1\5\1\27\1\5\1\27\1\5\1\33\1\27\2\uffff";
     static final String DFA7_maxS =
-        "\1\34\1\uffff\1\6\4\uffff\1\27\1\6\1\50\2\uffff";
+        "\1\32\1\uffff\1\32\4\uffff\1\5\1\27\1\5\1\27\1\5\1\33\1\27\1\32"+
+        "\1\5\1\27\1\5\1\27\1\5\1\33\1\52\2\uffff";
     static final String DFA7_acceptS =
-        "\1\uffff\1\1\1\uffff\1\4\1\5\1\6\1\7\3\uffff\1\2\1\3";
+        "\1\uffff\1\1\1\uffff\1\4\1\5\1\6\1\7\17\uffff\1\2\1\3";
     static final String DFA7_specialS =
-        "\14\uffff}>";
+        "\30\uffff}>";
     static final String[] DFA7_transitionS = {
-            "\1\3\1\1\2\uffff\1\6\2\uffff\1\5\1\4\16\uffff\1\2",
+            "\1\3\1\uffff\1\5\1\6\3\uffff\1\4\14\uffff\1\2\1\1",
             "",
             "\1\7",
             "",
@@ -847,7 +1166,19 @@ public class plotParser extends Parser {
             "",
             "\1\10",
             "\1\11",
-            "\1\13\20\uffff\1\12",
+            "\1\12",
+            "\1\13",
+            "\1\14",
+            "\1\15",
+            "\1\16",
+            "\1\17",
+            "\1\20",
+            "\1\21",
+            "\1\22",
+            "\1\23",
+            "\1\24",
+            "\1\25",
+            "\1\27\22\uffff\1\26",
             "",
             ""
     };
@@ -882,55 +1213,66 @@ public class plotParser extends Parser {
             this.transition = DFA7_transition;
         }
         public String getDescription() {
-            return "35:2: ( POINTS | '{' POINTS ',' POINTS '}' | '{' POINTS ',' POINTS ',' POINTS '}' | FLOAT | STRING | INT | COLOR )";
+            return "26:2: ( points | '{' points ',' points '}' | '{' points ',' points ',' points '}' | FLOAT | STRING | INT | COLOR )";
         }
     }
  
 
-    public static final BitSet FOLLOW_statement_in_program18 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_statement26 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_expression35 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_22_in_expression40 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_shape_in_expression42 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_23_in_expression44 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_shape_in_expression45 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_24_in_expression49 = new BitSet(new long[]{0x000000FFE2000000L});
-    public static final BitSet FOLLOW_option_in_expression51 = new BitSet(new long[]{0x0000000002800000L});
-    public static final BitSet FOLLOW_23_in_expression53 = new BitSet(new long[]{0x000000FFE0000000L});
-    public static final BitSet FOLLOW_option_in_expression54 = new BitSet(new long[]{0x0000000002800000L});
-    public static final BitSet FOLLOW_25_in_expression59 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VAR_in_shapeoptions294 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_shapeoptions295 = new BitSet(new long[]{0x0000000000001F20L});
-    public static final BitSet FOLLOW_set_in_shapeoptions296 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SHAPE_IDT_in_shape318 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_shape320 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_shape321 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_POINTS_in_shape323 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_23_in_shape325 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_POINTS_in_shape326 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_24_in_shape329 = new BitSet(new long[]{0x0000000002000080L});
-    public static final BitSet FOLLOW_shapeoptions_in_shape331 = new BitSet(new long[]{0x0000000002800000L});
-    public static final BitSet FOLLOW_23_in_shape333 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_shapeoptions_in_shape334 = new BitSet(new long[]{0x0000000002800000L});
-    public static final BitSet FOLLOW_25_in_shape339 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_option349 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_option372 = new BitSet(new long[]{0x0000000010003260L});
-    public static final BitSet FOLLOW_POINTS_in_option376 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_option378 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_POINTS_in_option379 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_option380 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_POINTS_in_option381 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_option382 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_option384 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_POINTS_in_option385 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_option386 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_POINTS_in_option387 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_option388 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_POINTS_in_option389 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_option390 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOAT_in_option392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_option394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_option396 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COLOR_in_option398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_statement_in_program33 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_statement41 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_expression50 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_shapes_in_expression56 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_opts_in_expression58 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_21_in_expression59 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_shapes66 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_shape_in_shapes70 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_23_in_shapes72 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_shape_in_shapes73 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_SHAPE_IDT_in_shape91 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_shape93 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_25_in_shape94 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_pointes_in_shape95 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_shapeopts_in_shape97 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_21_in_shape98 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_points_in_pointes108 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_23_in_pointes110 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_points_in_pointes111 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_26_in_points120 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_FLOAT_in_points122 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_points123 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_FLOAT_in_points124 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_points125 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_FLOAT_in_points126 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_points127 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_shapeopts141 = new BitSet(new long[]{0x0000000000000042L});
+    public static final BitSet FOLLOW_shapeoptions_in_shapeopts145 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_23_in_shapeopts147 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_shapeoptions_in_shapeopts148 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_VAR_in_shapeoptions160 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_shapeoptions162 = new BitSet(new long[]{0x0000000000000FA0L});
+    public static final BitSet FOLLOW_set_in_shapeoptions163 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_opts183 = new BitSet(new long[]{0x000003FFC0000002L});
+    public static final BitSet FOLLOW_option_in_opts187 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_23_in_opts189 = new BitSet(new long[]{0x000003FFC0000000L});
+    public static final BitSet FOLLOW_option_in_opts190 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_set_in_option202 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_option238 = new BitSet(new long[]{0x00000000060011A0L});
+    public static final BitSet FOLLOW_points_in_option242 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_option244 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_points_in_option245 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_option246 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_points_in_option247 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_option248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_option250 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_points_in_option251 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_option252 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_points_in_option253 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_option254 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_points_in_option255 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_option256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FLOAT_in_option258 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_option260 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_option262 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COLOR_in_option264 = new BitSet(new long[]{0x0000000000000002L});
 
 }
